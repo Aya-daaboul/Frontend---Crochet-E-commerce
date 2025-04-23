@@ -1,0 +1,132 @@
+.banner-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top:10%;
+    margin-left:5%;
+    
+}
+.banner-content-text{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+}
+.great-vibes--0{
+    font-weight:bold;
+    font-size:70px;
+}
+.first-title{
+    font-size:48px;
+    font-weight: bold;
+}
+.last-title-cta{
+    font-size:30px;
+    font-weight: bold;
+    margin-bottom:10%;
+}
+.button-filled-orange a{
+    color:white;
+}
+.banner-content-image img{
+    width:500px;
+    height:500px;
+    margin-left:5%;
+    margin-top:10px;
+}
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .great-vibes--0 {
+      font-size: 50px;
+    }
+  
+    .first-title {
+      font-size: 36px;
+    }
+  
+    .last-title-cta {
+      font-size: 24px;
+      margin-bottom: 8%;
+    }
+  
+    .banner-content-image img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+  
+/* Tablet: 768px and up (image and text stay side by side) */
+@media (max-width: 1024px) {
+    .great-vibes--0 {
+      font-size: 50px;
+    }
+  
+    .first-title {
+      font-size: 36px;
+    }
+  
+    .last-title-cta {
+      font-size: 24px;
+      margin-bottom: 8%;
+    }
+  
+    .banner-content-image img {
+      width: 400px;
+      height: 400px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .great-vibes--0 {
+      font-size: 40px;
+    }
+  
+    .first-title {
+      font-size: 28px;
+    }
+  
+    .last-title-cta {
+      font-size: 20px;
+      margin-bottom: 6%;
+    }
+  
+    .banner-content-image img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+  
+  /* Phone: 480px and below (stack vertically) */
+  @media (max-width: 480px) {
+    .banner-container {
+      flex-direction: column;
+      align-items: center;
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .banner-content-text {
+      align-items: center;
+    }
+  
+    .banner-content-image img {
+      margin: 0;
+      width: 220px;
+      height: 220px;
+      margin-top:5%;
+    }
+  
+    .great-vibes--0 {
+      font-size: 32px;
+    }
+  
+    .first-title {
+      font-size: 22px;
+    }
+  
+    .last-title-cta {
+      font-size: 18px;
+      margin-bottom: 4%;
+    }
+  }
+  
+  

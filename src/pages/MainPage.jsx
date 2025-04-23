@@ -1,9 +1,18 @@
+import Header from '../components/header.jsx'
+import '../css/main.css'
+import Banner from '../components/Banner.jsx'
+
+
+
 const MainPage = () => {
     return (
-      <div>
-        <h1>Welcome to Our Store</h1>
-        {/* Main content will go here */}
-      </div>
+      <>
+      <Header/>
+      <Banner/>
+
+
+      </>
+      
     );
   };
   
