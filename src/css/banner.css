@@ -13,18 +13,22 @@
 }
 .great-vibes--0{
     font-weight:bold;
-    font-size:70px;
+    font-size:3em;
 }
 .first-title{
     font-size:48px;
     font-weight: bold;
 }
+.gv1{
+  font-size:3 em;
+}
 .last-title-cta{
     font-size:30px;
     font-weight: bold;
     margin-bottom:10%;
+    color: #FF884B;
 }
-.button-filled-orange a{
+.button-filled-pink a{
     color:white;
 }
 .banner-content-image img{

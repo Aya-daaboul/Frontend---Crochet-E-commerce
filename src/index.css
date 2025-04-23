@@ -4,6 +4,14 @@
 .great-vibes{
   font-family: "Great Vibes", cursive;
 }
+.great-vibes--wild{
+  font-family: "Great Vibes", cursive;
+  font-size: 5em;
+}
+.great-vibes--huge{
+  font-family: "Great Vibes", cursive;
+  font-size: 2em;
+}
 
 html, body, #root {
   height: 100%;
@@ -61,10 +69,11 @@ body {
   cursor: pointer;
   transition: border-color 0.25s;
   color:white;
+  width:fit-content;
 }
 
 .button-orange {
-  border-radius: 4px;
+  border-radius: 3em;
   border: 3px solid #FF884B;;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -73,10 +82,11 @@ body {
   cursor: pointer;
   transition: border-color 0.25s;
   color:#FF884B;
+  width:fit-content;
 }
 
 .button-pink {
-  border-radius: 4px;
+  border-radius: 3em;
   border: 3px solid #FF577F;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -85,4 +95,5 @@ body {
   cursor: pointer;
   transition: border-color 0.25s;
   color:#FF577F;
+  width:fit-content;
 }

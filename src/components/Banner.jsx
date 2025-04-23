@@ -13,15 +13,15 @@ const Banner = () => {
                 Crocheted Masterpieces 
             </p>
 
-            <p className='org great-vibes great-vibes--0'>
+            <p className='pin great-vibes--wild'>
                 That Click!
             </p>
 
-            <p className='last-title-cta pin'>
+            <p className='last-title-cta'>
              Made by hand, felt by heart.
             </p>
 
-            <button className='button-filled-orange'>
+            <button className='button-filled-pink'>
 
                 <Link to='/Signup'>
                 Sign Up Now!
