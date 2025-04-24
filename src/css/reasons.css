@@ -5,6 +5,8 @@
     align-items: center;
     background-color: #ffe3eb; /* Soft pink background */
     padding: 4rem 2rem;
+    margin-top:10%;
+    margin-bottom:10%;
   }
   
   /* Title Styling */
@@ -66,12 +68,12 @@
   .header-lighter {
     font-size: clamp(0.9rem, 2vw, 1rem); /* Responsive */
     color: #FF577F;
+    font-weight: 600;
   }
   
   /* Button Styling */
   .button-pink {
     background-color: white;
-    border: none;
     padding: 1rem 2rem;
     border-radius: 2rem;
     cursor: pointer;
@@ -90,12 +92,25 @@
     font-weight: 600;
     font-size: clamp(1rem, 2.5vw, 1.1rem); /* Responsive */
   }
+  .header-darker-yarn{
+    margin-top:8%;
+  }
+  .reason-card--1 svg{
+    margin-top:10%;
+  }
+
+  .reason-card--3 svg{
+    margin-top:10%;
+  }
   
   /* Tablet View */
   @media (max-width: 1024px) {
     .cards-wrapper {
       flex-wrap: wrap;
       justify-content: center;
+    }
+    .reason-card svg {
+      width: 80%;
     }
   }
   
@@ -110,6 +125,9 @@
     .reason-card {
       width: 100%;
       max-width: 360px;
+    }
+    .reason-card svg {
+      width: 70%;
     }
   }
   
