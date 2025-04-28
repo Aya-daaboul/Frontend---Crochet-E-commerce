@@ -1,21 +1,24 @@
-// src/pages/LoginPage.jsx
+// src/pages/SignUpPage.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../api';
+import { registerUser, loginUser } from '../api';
 
-const LoginPage = () => {
+const SignUpPage = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setErrorMessage('');
     try {
+      await registerUser(name, email, password);
+      // After successful registration, log the user in automatically
       await loginUser(email, password);
-      navigate('/products'); // Redirect to products after login
+      navigate('/products'); // Redirect to products after registration
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -23,8 +26,16 @@ const LoginPage = () => {
 
   return (
     <div style={styles.container}>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin} style={styles.form}>
+      <h2>Sign Up</h2>
+      <form onSubmit={handleRegister} style={styles.form}>
+        <input
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          style={styles.input}
+        />
         <input
           type="email"
           placeholder="Email Address"
@@ -41,7 +52,7 @@ const LoginPage = () => {
           required
           style={styles.input}
         />
-        <button type="submit" style={styles.button}>Login</button>
+        <button type="submit" style={styles.button}>Register</button>
         {errorMessage && <p style={styles.error}>{errorMessage}</p>}
       </form>
     </div>
@@ -81,4 +92,4 @@ const styles = {
   }
 };
 
-export default LoginPage;
+export default SignUpPage;

@@ -1,55 +1,39 @@
-// frontend/src/api.js
-export const fetchWithToken = async (url, options = {}) => {
-    const token = localStorage.getItem('token');
-    
-    // Default headers
-    const headers = {
-      'Content-Type': 'application/json',
-      ...(token && { 'Authorization': `Bearer ${token}` }), // Only add if token exists
-      ...options.headers
-    };
-  
-    try {
-      const response = await fetch(url, {
-        ...options,
-        headers
-      });
-  
-      // Check for unauthorized response (401)
-      if (response.status === 401) {
-        // Handle token expiration or invalid token
-        localStorage.removeItem('token');
-        window.location.href = '/login?sessionExpired=true';
-        return Promise.reject(new Error('Session expired'));
-      }
-  
-      // Handle other error statuses
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        return Promise.reject({
-          status: response.status,
-          message: errorData.message || 'Request failed'
-        });
-      }
-  
-      return response;
-  
-    } catch (error) {
-      console.error('API request failed:', error);
-      return Promise.reject(error);
-    }
-  };
-  
-  // Helper function for common HTTP methods
-  export const api = {
-    get: (url) => fetchWithToken(url),
-    post: (url, body) => fetchWithToken(url, {
-      method: 'POST',
-      body: JSON.stringify(body)
-    }),
-    put: (url, body) => fetchWithToken(url, {
-      method: 'PUT',
-      body: JSON.stringify(body)
-    }),
-    delete: (url) => fetchWithToken(url, { method: 'DELETE' })
-  };
+// src/api/index.js
+import axios from 'axios';
+
+const API_URL = 'https://backend-crochet-e-commerce-production.up.railway.app/api';
+
+export const loginUser = async (email, password) => {
+  try {
+    const response = await axios.post(`${API_URL}/users/login`, {
+      EmailAddress: email,
+      Password: password,
+    });
+
+    const { token, user } = response.data;
+
+    // Save token and user info to localStorage
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+
+    return { token, user };
+  } catch (error) {
+    console.error('Login failed:', error.response?.data?.message || error.message);
+    throw new Error(error.response?.data?.message || 'Login failed');
+  }
+};
+
+export const registerUser = async (name, email, password) => {
+  try {
+    const response = await axios.post(`${API_URL}/users/register`, {
+      Name: name,
+      EmailAddress: email,
+      Password: password,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('Registration failed:', error.response?.data?.message || error.message);
+    throw new Error(error.response?.data?.message || 'Registration failed');
+  }
+};
