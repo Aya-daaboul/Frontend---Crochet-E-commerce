@@ -1,28 +1,26 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import yarn from '../assets/heavenly_yarn.png'
-import '../css/craft.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import yarn from "../assets/heavenly_yarn.png";
 
-const craft = () => {
-  return (
-    <div className='final_main_section'>
-
-        <div className='left_final_sec'>
-            <img src={yarn}></img>
-        </div>
-
-        <div className='right_final_sec'>
-            <p className='pin craft_cta'>Crafted with care, stitched with style</p>
-
-            <button className='button-pink'>
-                <Link to='/Signup'>Discover our Creation &nbsp; &#8594;</Link>
-            </button>
-
-        </div>
-
-      
+const Craft = () => (
+  <section className="flex flex-wrap items-start justify-around">
+    <div className="flex-shrink-0">
+      <img src={yarn} alt="heavenly yarn" className="w-full max-w-[500px]" />
     </div>
-  )
-}
 
-export default craft
+    <div className="flex flex-col items-start justify-center w-full max-w-[700px] p-5 mt-[5%] mb-[5%]">
+      <p className="text-[#FF577F] font-bold text-4xl sm:text-5xl mb-[10%]">
+        Crafted with care, stitched with style
+      </p>
+
+      <Link
+        to="/signup"
+        className="inline-block rounded-full border border-[#FF577F] text-[#FF577F] font-bold px-6 py-2 hover:bg-[#FF577F] hover:text-white transition"
+      >
+        Discover our Creation&nbsp; &rarr;
+      </Link>
+    </div>
+  </section>
+);
+
+export default Craft;

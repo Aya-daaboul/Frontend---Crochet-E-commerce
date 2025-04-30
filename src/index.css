@@ -1,23 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-
-.great-vibes{
+.great-vibes {
   font-family: "Great Vibes", cursive;
 }
-.great-vibes--wild{
+.great-vibes--wild {
   font-family: "Great Vibes", cursive;
   font-size: 5em;
 }
-.great-vibes--huge{
+.great-vibes--huge {
   font-family: "Great Vibes", cursive;
   font-size: 2em;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
-  width:100%;
+  width: 100%;
 }
 body {
   min-height: 100vh;
@@ -40,11 +44,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-.org{
- color:#FF884B;
+.org {
+  color: #ff884b;
 }
-.pin{
-  color:#FF577F;
+.pin {
+  color: #ff577f;
 }
 .button-filled-orange {
   border-radius: 4px;
@@ -52,11 +56,11 @@ body {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
-  background-color: #FF884B;
+  background-color: #ff884b;
   cursor: pointer;
   transition: border-color 0.25s;
-  color:white;
-  width:fit-content;
+  color: white;
+  width: fit-content;
 }
 
 .button-filled-pink {
@@ -65,35 +69,35 @@ body {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
-  background-color: #FF577F;
+  background-color: #ff577f;
   cursor: pointer;
   transition: border-color 0.25s;
-  color:white;
-  width:fit-content;
+  color: white;
+  width: fit-content;
 }
 
 .button-orange {
   border-radius: 3em;
-  border: 3px solid #FF884B;;
+  border: 3px solid #ff884b;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
   background-color: white;
   cursor: pointer;
   transition: border-color 0.25s;
-  color:#FF884B;
-  width:fit-content;
+  color: #ff884b;
+  width: fit-content;
 }
 
 .button-pink {
   border-radius: 3em;
-  border: 1px solid #FF577F;
+  border: 1px solid #ff577f;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
   background-color: white;
   cursor: pointer;
   transition: border-color 0.25s;
-  color:#FF577F;
-  width:fit-content;
+  color: #ff577f;
+  width: fit-content;
 }
