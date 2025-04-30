@@ -17,6 +17,7 @@ const UserMenu = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     navigate("/home");
+    window.location.reload();
   };
 
   // ✅ If not logged in, show "Sign In" button
