@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import UserMenu from "./UserMenu";
 
 const CloseIcon = () => (
   <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff">
@@ -71,6 +72,7 @@ const Header = () => {
           <Link to="/cart" className="ml-4">
             <CartIcon />
           </Link>
+          <UserMenu />
         </div>
       </header>
 

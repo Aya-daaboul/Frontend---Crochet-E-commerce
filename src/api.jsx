@@ -1,7 +1,8 @@
 // src/api/index.js
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = 'https://backend-crochet-e-commerce-production.up.railway.app/api';
+const API_URL =
+  "https://backend-crochet-e-commerce-production.up.railway.app/api";
 
 export const loginUser = async (email, password) => {
   try {
@@ -13,13 +14,16 @@ export const loginUser = async (email, password) => {
     const { token, user } = response.data;
 
     // Save token and user info to localStorage
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
 
     return { token, user };
   } catch (error) {
-    console.error('Login failed:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Login failed');
+    console.error(
+      "Login failed:",
+      error.response?.data?.message || error.message
+    );
+    throw new Error(error.response?.data?.message || "Login failed");
   }
 };
 
@@ -33,7 +37,10 @@ export const registerUser = async (name, email, password) => {
 
     return response.data;
   } catch (error) {
-    console.error('Registration failed:', error.response?.data?.message || error.message);
-    throw new Error(error.response?.data?.message || 'Registration failed');
+    console.error(
+      "Registration failed:",
+      error.response?.data?.message || error.message
+    );
+    throw new Error(error.response?.data?.message || "Registration failed");
   }
 };
