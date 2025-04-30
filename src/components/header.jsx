@@ -45,34 +45,45 @@ const Header = () => {
     <>
       <header className="hidden md:flex bg-[#FF577F] rounded-full py-5 px-8 w-[90%] max-w-[1200px] h-[70px] mx-auto my-8 items-center justify-between relative overflow-visible">
         <div className="flex items-center gap-8">
-          <Link to="/" className="text-white font-bold text-base">
+          <div className="pl-9">
+            <UserMenu />
+          </div>
+          <Link
+            to="/"
+            className="text-white hover:text-[#fdda4d] font-bold text-base transition-transform duration-200 hover:scale-110 hover:-rotate-3"
+          >
             Home
           </Link>
           <Link
             to="/products"
-            className="text-white font-bold text-base ml-8 mr-[18%]"
+            className="text-white hover:text-[#fdda4d] font-bold text-base transition-transform duration-200 hover:scale-110 hover:-rotate-3"
           >
             Products
           </Link>
         </div>
 
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-110 hover:bg-[#fdda4d]">
           <Link to="/">
             <YarnIcon />
           </Link>
         </div>
 
         <div className="flex items-center gap-8">
-          <Link to="/about" className="text-white font-bold text-base ml-8">
+          <Link
+            to="/about"
+            className="text-white hover:text-[#fdda4d] font-bold text-base transition-transform duration-200 hover:scale-110 hover:rotate-3"
+          >
             About
           </Link>
-          <Link to="/contact" className="text-white font-bold text-base">
+          <Link
+            to="/contact"
+            className="text-white hover:text-[#fdda4d] font-bold text-base transition-transform duration-200 hover:scale-110 hover:rotate-3"
+          >
             Contact
           </Link>
-          <Link to="/cart" className="ml-4">
+          <Link to="/cart" className="ml-4 pr-9 hover:scale-110">
             <CartIcon />
           </Link>
-          <UserMenu />
         </div>
       </header>
 
@@ -95,7 +106,7 @@ const Header = () => {
           <button
             aria-label="Close menu"
             onClick={() => setSidebarOpen(false)}
-            className="self-end bg-[#FF577F] p-2 rounded-lg mb-5"
+            className="self-end  p-2 rounded-lg mb-5"
           >
             <CloseIcon />
           </button>

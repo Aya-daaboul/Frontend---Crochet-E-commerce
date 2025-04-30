@@ -51,7 +51,7 @@ const UserMenu = () => {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-2 bg-white text-[#FF577F] font-semibold px-4 py-2 rounded-full shadow hover:bg-gray-100 transition"
       >
-        <span>Hi, {user.name}</span>
+        <span>Hi, {user.name.split(" ")[0]}!</span>
       </button>
 
       {open && (

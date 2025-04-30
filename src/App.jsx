@@ -19,11 +19,11 @@ const App = () => (
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/home" element={<MainPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/products" element={<ProductsPage />} />
 
       {/* Protected routes */}
       <Route element={<ProtectedRoute />}>
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/products" element={<ProductsPage />} />
         {/* Add other protected routes here */}
       </Route>
     </Routes>
