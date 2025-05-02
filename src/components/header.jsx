@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import UserMenu from "./UserMenu";
+import { useCartNumber } from "../components/CartNumber";
 
 const CloseIcon = () => (
   <svg width="34" height="34" viewBox="0 0 24 24" fill="#fff">
@@ -40,6 +41,7 @@ const YarnIcon = () => (
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { cartCount } = useCartNumber();
 
   return (
     <>
@@ -81,9 +83,16 @@ const Header = () => {
           >
             Contact
           </Link>
-          <Link to="/cart" className="ml-4 pr-9 hover:scale-110">
-            <CartIcon />
-          </Link>
+          <div className="relative ml-4">
+            <Link to="/cart">
+              <CartIcon />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-[#fed530] text-[#FF577F] text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
       </header>
 

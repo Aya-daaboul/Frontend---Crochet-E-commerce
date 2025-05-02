@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "../components/header";
+import { addToCart } from "../api";
+import { useCartNumber } from "../components/CartNumber";
 
 const categories = ["all", "bags", "keychains", "toys", "plushies"];
 
@@ -15,7 +17,7 @@ const ProductsPage = () => {
 
   const fetchProductsByCategory = async (category) => {
     setLoading(true);
-    setProducts([]); // clear old products
+    setProducts([]); // clear the old products
     try {
       const endpoint =
         category === "all"
@@ -28,6 +30,19 @@ const ProductsPage = () => {
     }
     setLoading(false);
   };
+
+  const handleAddToCart = async (productId) => {
+    try {
+      const token = localStorage.getItem("token");
+      await addToCart(productId, 1, token);
+      incrementCart(1); // adds to cart
+    } catch (err) {
+      console.error("Add to cart failed:", err);
+      alert("Could not add to cart.");
+    }
+  };
+
+  const { incrementCart } = useCartNumber();
 
   return (
     <>
@@ -99,7 +114,10 @@ const ProductsPage = () => {
                   )}
                 </div>
 
-                <button className="mt-3 text-sm text-[#FF4D8B] font-medium hover:underline">
+                <button
+                  onClick={() => handleAddToCart(product.ID)}
+                  className="mt-3 text-sm text-[#FF4D8B] font-medium hover:underline"
+                >
                   Add to cart →
                 </button>
               </div>

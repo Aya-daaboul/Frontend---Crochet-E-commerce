@@ -44,3 +44,19 @@ export const registerUser = async (name, email, password) => {
     throw new Error(error.response?.data?.message || "Registration failed");
   }
 };
+
+export const addToCart = async (productId, quantity = 1, token = null) => {
+  const config = {
+    headers: {},
+  };
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  const res = await axios.post(
+    "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/add",
+    { P_id: productId, Quantity: quantity }, // ✅ CORRECT KEYS
+    config
+  );
+  return res.data;
+};
