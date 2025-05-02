@@ -38,7 +38,6 @@ const ProductsPage = () => {
       incrementCart(1); // adds to cart
     } catch (err) {
       console.error("Add to cart failed:", err);
-      alert("Could not add to cart.");
     }
   };
 

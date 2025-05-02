@@ -8,6 +8,7 @@ import MainPage from "./pages/MainPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignUpPage from "./pages/SignUpPage";
 // Import other pages as needed
+import Footer from "./components/footer";
 
 const App = () => (
   <BrowserRouter>
@@ -27,6 +28,7 @@ const App = () => (
         {/* Add other protected routes here */}
       </Route>
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 

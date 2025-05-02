@@ -1,15 +1,13 @@
-// frontend/src/components/ProtectedRoute.js
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    // Use Navigate instead of Redirect in v6
     return <Navigate to="/login" replace />;
   }
 
-  return children;
+  return <Outlet />;
 };
 
 export default ProtectedRoute;
