@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "../components/header";
 import { addToCart } from "../api";
 import { useCartNumber } from "../components/CartNumber";
 
@@ -30,6 +29,7 @@ const ProductsPage = () => {
     }
     setLoading(false);
   };
+  const { incrementCart } = useCartNumber();
 
   const handleAddToCart = async (productId) => {
     try {
@@ -41,11 +41,8 @@ const ProductsPage = () => {
     }
   };
 
-  const { incrementCart } = useCartNumber();
-
   return (
     <>
-      <Header />
       <div className="min-h-screen bg-white px-6 py-12">
         {/* Title */}
         <h1 className="text-center text-4xl font-bold text-[#FF4D8B] mb-10">

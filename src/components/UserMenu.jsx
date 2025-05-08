@@ -20,7 +20,6 @@ const UserMenu = () => {
     window.location.reload();
   };
 
-  // ✅ If not logged in, show "Sign In" button
   if (!user) {
     return (
       <button
@@ -32,19 +31,6 @@ const UserMenu = () => {
     );
   }
 
-  // ✅ Logged in: show dropdown
-  if (!user) {
-    return (
-      <button
-        onClick={() => navigate("/login")}
-        className="px-5 py-2 rounded-full font-semibold text-white bg-[#FF577F] hover:bg-[#e74b6a] active:bg-[#cc3f5d] shadow transition-all"
-      >
-        Sign In
-      </button>
-    );
-  }
-
-  // If logged in
   return (
     <div className="relative">
       <button
@@ -58,13 +44,36 @@ const UserMenu = () => {
         <div className="absolute right-0 mt-2 w-44 bg-white rounded-md shadow-lg z-50 border border-pink-100">
           <button
             onClick={() => {
-              navigate("/cart");
+              navigate("/profile");
+              setOpen(false);
+            }}
+            className="block w-full px-4 py-2 text-left text-[#FF577F] hover:bg-pink-50 font-medium transition"
+          >
+            My Profile
+          </button>
+
+          <button
+            onClick={() => {
+              navigate("/history");
               setOpen(false);
             }}
             className="block w-full px-4 py-2 text-left text-[#FF577F] hover:bg-pink-50 font-medium transition"
           >
             Cart History
           </button>
+
+          {user.role === "admin" && (
+            <button
+              onClick={() => {
+                navigate("/admin");
+                setOpen(false);
+              }}
+              className="block w-full px-4 py-2 text-left text-[#FF577F] hover:bg-pink-50 font-medium transition"
+            >
+              Admin Page
+            </button>
+          )}
+
           <button
             onClick={logout}
             className="block w-full px-4 py-2 text-left text-red-600 hover:bg-red-100 font-medium transition"
@@ -76,4 +85,5 @@ const UserMenu = () => {
     </div>
   );
 };
+
 export default UserMenu;

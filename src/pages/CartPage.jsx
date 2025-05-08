@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FaTrash } from "react-icons/fa";
-import Header from "../components/header";
 import ratmain from "../assets/ratmain.png";
 
 const CartPage = () => {
@@ -93,8 +92,6 @@ const CartPage = () => {
 
   return (
     <>
-      <Header />
-
       {/* Magenta Loading Bar */}
       {(loading || confirming) && (
         <div className="fixed top-0 left-0 w-full h-1 bg-[#FF4D8B] animate-pulse z-50" />
@@ -170,15 +167,10 @@ const CartPage = () => {
               Total Price: ${total}
             </p>
             <button
-              onClick={handleConfirm}
-              disabled={confirming}
-              className={`mt-4 px-6 py-2 rounded-full bg-[#FF4D8B] text-white font-semibold transition ${
-                confirming
-                  ? "opacity-70 cursor-not-allowed"
-                  : "hover:bg-pink-500"
-              }`}
+              onClick={() => navigate("/address")}
+              className="mt-4 px-6 py-2 rounded-full bg-[#FF4D8B] text-white font-semibold transition hover:bg-pink-500"
             >
-              {confirming ? "Processing..." : "Confirm Order"}
+              Proceed to Address
             </button>
           </div>
         )}
