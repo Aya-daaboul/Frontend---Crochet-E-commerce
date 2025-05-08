@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import yarn from "../assets/heavenly_yarn.png";
 
-const Craft = () => (
+const CraftSec = () => (
   <section className="flex flex-wrap items-start justify-around">
     <div className="flex-shrink-0">
       <img src={yarn} alt="heavenly yarn" className="w-full max-w-[500px]" />
@@ -24,4 +24,4 @@ const Craft = () => (
   </section>
 );
 
-export default Craft;
+export default CraftSec;
