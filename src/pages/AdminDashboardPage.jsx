@@ -111,7 +111,6 @@ const AdminDashboardPage = () => {
           { name: "Name", type: "text", placeholder: "Product Name" },
           { name: "Description", type: "textarea", placeholder: "Description" },
           { name: "Price", type: "number", placeholder: "Price" },
-          { name: "Category", type: "text", placeholder: "Category" },
           {
             name: "Discount",
             type: "number",
@@ -133,14 +132,42 @@ const AdminDashboardPage = () => {
               key={field.name}
               type={field.type}
               placeholder={field.placeholder}
+              min={field.name === "Discount" ? "0" : undefined}
+              max={field.name === "Discount" ? "75" : undefined}
               className="w-full p-2 border-2 border-[#FF4D8B] rounded focus:outline-none focus:ring-2 focus:ring-[#fdda4d]"
               value={formData[field.name]}
-              onChange={(e) =>
-                setFormData({ ...formData, [field.name]: e.target.value })
-              }
+              onChange={(e) => {
+                let value = e.target.value;
+                if (field.name === "Discount") {
+                  const parsed = parseFloat(value);
+                  value = Math.min(75, Math.max(0, isNaN(parsed) ? 0 : parsed));
+                }
+                setFormData({ ...formData, [field.name]: value });
+              }}
             />
           )
         )}
+        {/* Category Dropdown */}
+        <select
+          value={formData.Category}
+          onChange={(e) =>
+            setFormData({ ...formData, Category: e.target.value })
+          }
+          className="w-full p-2 border-2 border-[#FF4D8B] rounded focus:outline-none focus:ring-2 focus:ring-[#fdda4d]"
+        >
+          <option value="">Select a category</option>
+          {[
+            "bags",
+            "keychains",
+            "amigurumi",
+            "crochet bouquet",
+            "mug coasters",
+          ].map((cat) => (
+            <option key={cat} value={cat}>
+              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+            </option>
+          ))}
+        </select>
 
         <div className="flex items-center gap-4">
           <input
@@ -168,19 +195,10 @@ const AdminDashboardPage = () => {
         <button
           onClick={handleCreateProduct}
           disabled={loading}
-          className="bg-[#FF4D8B] text-[#fed530] font-semibold px-4 py-2 rounded hover:bg-[#d93e74] w-full disabled:opacity-60 transition"
+          className="bg-[#FF4D8B] text-[#fed530] font-semibold px-4 py-2 rounded hover:bg-[#d93e74] w-full disabled:opacity-60 transition mb-4"
         >
           {loading ? "Creating..." : "Create Product"}
         </button>
-      </div>
-
-      <div className="mt-10">
-        <h2 className="text-xl font-semibold mb-2 text-[#FF4D8B]">
-          🔒 Admin Tools (Coming Soon)
-        </h2>
-        <p className="text-sm text-gray-500">
-          User management, product editing, and analytics coming later.
-        </p>
       </div>
     </div>
   );

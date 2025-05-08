@@ -7,6 +7,7 @@ const AdminLayout = () => {
   const tabs = [
     { path: "/admin/add", label: "➕ Add Product" },
     { path: "/admin/products", label: "🛒 Manage Products" },
+    { path: "/admin/orders", label: "📦 Manage Orders" }, // new
   ];
 
   return (

@@ -15,7 +15,7 @@ const Craft = () => (
 
       <Link
         to="/signup"
-        className="inline-block rounded-full border border-[#FF577F] text-[#FF577F] font-bold px-6 py-2 hover:bg-[#FF577F] hover:text-white transition"
+        className="inline-block rounded-full border border-[#FF577F] text-[#FF577F] font-bold px-6 py-2 hover:bg-[#FF577F] hover:text-white transition mx-auto sm:mx-0"
       >
         Discover our Creation&nbsp; &rarr;
       </Link>

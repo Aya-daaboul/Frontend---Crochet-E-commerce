@@ -10,6 +10,7 @@ import {
 
 const CartHistoryPage = () => {
   const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const CartHistoryPage = () => {
   }, []);
 
   const fetchHistory = async () => {
+    setLoading(true);
     try {
       const res = await axios.get(
         "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/history",
@@ -27,6 +29,8 @@ const CartHistoryPage = () => {
       setOrders(res.data);
     } catch (err) {
       console.error("Failed to fetch order history:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -78,6 +82,7 @@ const CartHistoryPage = () => {
         );
     }
   };
+  console.log("Orders:", orders);
 
   return (
     <>
@@ -86,7 +91,11 @@ const CartHistoryPage = () => {
           My Orders
         </h1>
 
-        {orders.length === 0 ? (
+        {loading ? (
+          <div className="text-center text-[#FF4D8B] font-bold text-lg animate-pulse">
+            Loading your orders...
+          </div>
+        ) : orders.length === 0 ? (
           <p className="text-center text-gray-500">No past orders yet.</p>
         ) : (
           <div className="space-y-6 max-w-4xl mx-auto">

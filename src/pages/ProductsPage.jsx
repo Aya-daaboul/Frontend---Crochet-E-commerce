@@ -2,10 +2,26 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { addToCart } from "../api";
 import { useCartNumber } from "../components/CartNumber";
+import { useNavigate } from "react-router-dom";
 
-const categories = ["all", "bags", "keychains", "toys", "plushies"];
+const categories = [
+  "all",
+  "bags",
+  "keychains",
+  "amigurumi",
+  "crochet bouquet",
+  "mug coasters",
+];
+
+const formatLabel = (text) =>
+  text
+    .split(" ")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
 
 const ProductsPage = () => {
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [loading, setLoading] = useState(false);
@@ -16,7 +32,7 @@ const ProductsPage = () => {
 
   const fetchProductsByCategory = async (category) => {
     setLoading(true);
-    setProducts([]); // clear the old products
+    setProducts([]); // clears old products
     try {
       const endpoint =
         category === "all"
@@ -46,11 +62,7 @@ const ProductsPage = () => {
       <div className="min-h-screen bg-white px-6 py-12">
         {/* Title */}
         <h1 className="text-center text-4xl font-bold text-[#FF4D8B] mb-10">
-          {selectedCategory === "all"
-            ? "All Products"
-            : selectedCategory.charAt(0).toUpperCase() +
-              selectedCategory.slice(1)}
-          {selectedCategory === "bags" && " Pouches"}
+          {formatLabel(selectedCategory)}
         </h1>
 
         {/* Filter Buttons */}
@@ -65,7 +77,7 @@ const ProductsPage = () => {
                   : "text-[#FF4D8B] border-[#FF4D8B] hover:bg-[#ffe6ef]"
               }`}
             >
-              {cat.charAt(0).toUpperCase() + cat.slice(1)}
+              {formatLabel(cat)}
             </button>
           ))}
         </div>
@@ -83,20 +95,24 @@ const ProductsPage = () => {
             {products.map((product) => (
               <div
                 key={product.ID}
-                className="rounded-xl border border-pink-200 p-4 text-center shadow-sm hover:shadow-md transition"
+                className="rounded-xl border border-pink-200 p-4 text-center shadow-sm hover:shadow-lg transition-transform transform hover:scale-105 duration-200"
               >
-                <img
-                  src={
-                    product.Images?.[0]?.Image_URL ||
-                    "https://via.placeholder.com/200"
-                  }
-                  alt={product.Name}
-                  className="w-full h-60 object-cover rounded-lg mb-4"
-                />
-
-                <h3 className="text-md font-bold text-[#FF4D8B] mb-1">
-                  {product.Name}
-                </h3>
+                <div
+                  onClick={() => navigate(`/product/${product.ID}`)}
+                  className="cursor-pointer"
+                >
+                  <img
+                    src={
+                      product.Images?.[0]?.Image_URL ||
+                      "https://via.placeholder.com/200"
+                    }
+                    alt={product.Name}
+                    className="w-full h-60 object-cover rounded-lg mb-4"
+                  />
+                  <h3 className="text-md font-bold text-[#FF4D8B] mb-1">
+                    {product.Name}
+                  </h3>
+                </div>
 
                 <div className="text-lg font-bold text-[#FF4D8B]">
                   ${product.Price}

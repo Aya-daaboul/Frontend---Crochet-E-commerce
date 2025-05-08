@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Reasons = () => {
   return (
-    <section className="flex flex-col items-center bg-secondary py-16 px-6 md:px-8 mt-20 mb-20">
+    <section className="flex flex-col items-center bg-secondary py-16 px-6 md:px-8  mb-20">
       <h2 className="text-center font-bold text-white text-2xl sm:text-3xl md:text-4xl mb-12">
         Why we're the <span className="great-vibes text-primary">Perfect</span>{" "}
         fit?

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const AdminProductManagerPage = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState({ message: "", type: "" });
   const token = localStorage.getItem("token");
 
@@ -11,6 +12,7 @@ const AdminProductManagerPage = () => {
   };
 
   const fetchProducts = async () => {
+    setLoading(true);
     try {
       const res = await fetch(
         "https://backend-crochet-e-commerce-production.up.railway.app/api/products"
@@ -18,7 +20,10 @@ const AdminProductManagerPage = () => {
       const data = await res.json();
       setProducts(data || []);
     } catch (err) {
+      console.error("Failed to load products", err);
       showToast("Failed to load products", "error");
+    } finally {
+      setLoading(false); // end
     }
   };
 
@@ -73,9 +78,15 @@ const AdminProductManagerPage = () => {
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {products.length === 0 && (
-          <p className="text-gray-500 col-span-full">No products found.</p>
-        )}
+        {loading ? (
+          <div className="col-span-full flex justify-center py-16">
+            <div className="w-10 h-10 border-4 border-[#FF4D8B] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : products.length === 0 ? (
+          <p className="text-gray-500 col-span-full text-center">
+            No products found.
+          </p>
+        ) : null}
 
         {products.map((product) => (
           <div

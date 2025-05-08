@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import rat from "../assets/ratmain.png";
 
 const Banner = () => (
-  <section className="flex flex-col md:flex-row md:items-center mt-[10%] md:ml-[5%]">
+  <section className="flex flex-col md:flex-row items-center justify-center gap-10 mt-16 px-6 text-center md:text-left">
     <div className="flex flex-col gap-5">
       <p className="text-[#FF577F] font-bold text-4xl sm:text-5xl lg:text-[48px]">
         Crocheted Masterpieces
@@ -19,7 +19,7 @@ const Banner = () => (
 
       <Link
         to="/signup"
-        className="inline-block bg-[#FF577F] text-white font-bold rounded px-6 py-2 w-fit hover:opacity-90 transition"
+        className="inline-block bg-[#FF577F] text-white font-bold rounded px-6 py-2 w-fit hover:opacity-90 transition mx-auto md:mx-0"
       >
         Sign Up&nbsp;Now!
       </Link>

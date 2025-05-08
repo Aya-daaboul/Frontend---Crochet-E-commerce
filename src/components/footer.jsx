@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-y-10 text-lg font-medium">
         {/* Logo Column */}
         <div className="flex-1 min-w-[150px] text-center sm:text-left text-2xl font-bold">
-          Logo Goes Here
+          Crochet by Aya
         </div>
 
         {/* Quick Links */}

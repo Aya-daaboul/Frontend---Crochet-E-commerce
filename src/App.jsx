@@ -15,6 +15,10 @@ import Header from "./components/header";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
 import AdminLayout from "./pages/AdminLayout";
 import AdminProductManagerPage from "./pages/AdminProductManagerPage";
+import ProductPage from "./pages/ProductPage";
+import AdminOrderManagerPage from "./pages/AdminOrderManagerPage";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
 
 const App = () => (
   <BrowserRouter>
@@ -28,6 +32,9 @@ const App = () => (
       <Route path="/home" element={<MainPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/products" element={<ProductsPage />} />
+      <Route path="/product/:id" element={<ProductPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/about" element={<AboutPage />} />
 
       {/* Protected routes */}
       <Route element={<ProtectedRoute />}>
@@ -38,6 +45,7 @@ const App = () => (
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="add" element={<AdminDashboardPage />} />
           <Route path="products" element={<AdminProductManagerPage />} />
+          <Route path="orders" element={<AdminOrderManagerPage />} />
           <Route index element={<Navigate to="add" replace />} />
         </Route>
       </Route>

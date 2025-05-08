@@ -111,33 +111,43 @@ const Header = () => {
       </header>
 
       {sidebarOpen && (
-        <aside className="fixed top-0 right-0 w-60 h-full bg-[#FF577F] text-white p-5 flex flex-col z-[1001]">
-          <button
-            aria-label="Close menu"
+        <div className="fixed inset-0 z-[1001]">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black bg-opacity-40"
             onClick={() => setSidebarOpen(false)}
-            className="self-end  p-2 rounded-lg mb-5"
-          >
-            <CloseIcon />
-          </button>
+          />
 
-          <nav className="flex flex-col gap-5 text-lg font-bold">
-            <Link to="/" onClick={() => setSidebarOpen(false)}>
-              Home
-            </Link>
-            <Link to="/about" onClick={() => setSidebarOpen(false)}>
-              About Us
-            </Link>
-            <Link to="/products" onClick={() => setSidebarOpen(false)}>
-              Products
-            </Link>
-            <Link to="/contact" onClick={() => setSidebarOpen(false)}>
-              Contact Us
-            </Link>
-            <Link to="/cart" onClick={() => setSidebarOpen(false)}>
-              Start Shopping
-            </Link>
-          </nav>
-        </aside>
+          {/* Sidebar */}
+          <aside className="absolute top-4 right-4 w-64 bg-[#FF577F] text-[#fdda4d] px-6 py-6 rounded-2xl shadow-2xl flex flex-col transition-all duration-300 transform animate-slide-in-right">
+            <button
+              aria-label="Close menu"
+              onClick={() => setSidebarOpen(false)}
+              className="self-end mb-6"
+            >
+              <CloseIcon />
+            </button>
+
+            <nav className="flex flex-col gap-4 pl-2">
+              {[
+                { path: "/", label: "Home" },
+                { path: "/about", label: "About Us" },
+                { path: "/products", label: "Products" },
+                { path: "/contact", label: "Contact Us" },
+                { path: "/cart", label: "Start Shopping" },
+              ].map(({ path, label }) => (
+                <Link
+                  key={path}
+                  to={path}
+                  onClick={() => setSidebarOpen(false)}
+                  className="text-[#fdda4d] text-lg font-bold tracking-wide pl-1 hover:text-white transition-all duration-200"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </aside>
+        </div>
       )}
     </>
   );
