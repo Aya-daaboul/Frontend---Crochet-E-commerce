@@ -2,16 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReviewSection from "../components/reviewSection";
 
+// This component displays the details of a single product, including its image, name, price, description, and reviews.
 const ProductPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState(null);
 
+  // Fetch product details from the API
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         const res = await fetch(
-          `https://backend-crochet-e-commerce-production.up.railway.app/api/products/${id}`
+          `https://backend-crochet-e-commerce.onrender.com/api/products/${id}`
         );
         const data = await res.json();
         setProduct(data);
@@ -30,6 +32,7 @@ const ProductPage = () => {
     );
   }
 
+  // Check if the product is available
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <button
@@ -44,7 +47,7 @@ const ProductPage = () => {
           src={
             product.Images?.[0]?.Image_URL?.startsWith("http")
               ? product.Images[0].Image_URL
-              : `https://backend-crochet-e-commerce-production.up.railway.app${product.Images[0].Image_URL}`
+              : `https://backend-crochet-e-commerce.onrender.com${product.Images[0].Image_URL}`
           }
           alt={product.Name}
           className="w-full h-[400px] object-cover rounded"

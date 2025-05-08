@@ -30,14 +30,15 @@ const ProductsPage = () => {
     fetchProductsByCategory(selectedCategory);
   }, [selectedCategory]);
 
+  // Fetch products based on selected category
   const fetchProductsByCategory = async (category) => {
     setLoading(true);
     setProducts([]); // clears old products
     try {
       const endpoint =
         category === "all"
-          ? "https://backend-crochet-e-commerce-production.up.railway.app/api/products"
-          : `https://backend-crochet-e-commerce-production.up.railway.app/api/products/category/${category}`;
+          ? "https://backend-crochet-e-commerce.onrender.com/api/products"
+          : `https://backend-crochet-e-commerce.onrender.com/api/products/category/${category}`;
       const res = await axios.get(endpoint);
       setProducts(res.data);
     } catch (err) {

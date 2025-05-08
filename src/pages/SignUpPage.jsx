@@ -6,6 +6,7 @@ import ratorange from "../assets/ratorange.png";
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -14,14 +15,43 @@ const SignupPage = () => {
   const handleSignup = async (e) => {
     e.preventDefault();
     setErrorMessage("");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[A-Z]).{8,}$/;
+
+    if (!emailRegex.test(email)) {
+      return setErrorMessage("Please enter a valid email address.");
+    }
+
+    if (!passwordRegex.test(password)) {
+      return setErrorMessage(
+        "Password must be at least 8 characters with 1 uppercase letter."
+      );
+    }
+
+    if (password !== confirmPassword) {
+      return setErrorMessage("Passwords do not match.");
+    }
+
+    setLoading(true);
     try {
-      await registerUser(name, email, password); // Adjust if needed
+      await registerUser(name, email, password);
+      setName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
       navigate("/login");
+      window.scrollTo({ top: 0, behavior: "instant" });
     } catch (error) {
       setErrorMessage(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
+  const [loading, setLoading] = useState(false);
+
+  // This function handles the signup process by calling the API and navigating to the login page on success.
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
       {/* Top Heading */}
@@ -70,15 +100,34 @@ const SignupPage = () => {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#FF4D8B]"
               />
             </div>
+            <div>
+              <label className="block text-sm text-gray-600 mb-1">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-[#FF4D8B]"
+              />
+            </div>
+
             {errorMessage && (
               <p className="text-sm text-red-500">{errorMessage}</p>
             )}
             <button
               type="submit"
-              className="w-full bg-[#FF4D8B] hover:bg-[#e9407a] text-white py-2 rounded-lg font-semibold transition"
+              disabled={loading}
+              className="w-full bg-[#FF4D8B] hover:bg-[#e9407a] text-white py-2 rounded-lg font-semibold transition flex justify-center items-center gap-2"
             >
-              Create Account
+              {loading ? (
+                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                "Create Account"
+              )}
             </button>
+
             <div className="text-sm mt-2 text-gray-600">
               Already have an account?{" "}
               <span

@@ -36,14 +36,6 @@ const ServicesSec = () => (
         </div>
       ))}
     </div>
-
-    {/* CTA */}
-    <Link
-      to="/services"
-      className="inline-block rounded-3xl border border-[#ff577f] bg-white px-8 py-3 font-bold text-[#ff577f] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-    >
-      Explore&nbsp;Services&nbsp;&rarr;
-    </Link>
   </section>
 );
 

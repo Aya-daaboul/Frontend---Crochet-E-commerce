@@ -1,5 +1,6 @@
 import React from "react";
 
+// This page displays the contact information
 const ContactPage = () => {
   return (
     <div className="min-h-screen bg-white px-6 py-12 max-w-4xl mx-auto">

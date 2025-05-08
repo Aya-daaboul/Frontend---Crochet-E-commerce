@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const BASE = "https://backend-crochet-e-commerce-production.up.railway.app";
+  const BASE = "https://backend-crochet-e-commerce.onrender.com";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -80,6 +80,7 @@ export default function ProfilePage() {
       body: JSON.stringify(payload),
     });
 
+    // Check if the response is ok (status code 200-299)
     if (res.ok) {
       alert("Profile updated.");
       setEditing(false);
@@ -98,6 +99,7 @@ export default function ProfilePage() {
     }
   };
 
+  // This function handles the logout process.
   return (
     <div className="min-h-screen bg-white px-6 py-12">
       {/* Header */}

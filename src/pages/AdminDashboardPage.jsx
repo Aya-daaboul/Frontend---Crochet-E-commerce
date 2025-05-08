@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AdminDashboardPage = () => {
+  // This component serves as the admin dashboard for adding new products.
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
@@ -33,7 +34,7 @@ const AdminDashboardPage = () => {
     data.append("image", imageFile);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/uploads",
+        "https://backend-crochet-e-commerce.onrender.com/api/uploads",
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
@@ -43,8 +44,7 @@ const AdminDashboardPage = () => {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Upload failed");
       setImageUrl(
-        "https://backend-crochet-e-commerce-production.up.railway.app" +
-          result.url
+        "https://backend-crochet-e-commerce.onrender.com" + result.url
       );
       showToast("Image uploaded!", "success");
     } catch (err) {
@@ -57,7 +57,7 @@ const AdminDashboardPage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/products",
+        "https://backend-crochet-e-commerce.onrender.com/api/products",
         {
           method: "POST",
           headers: {

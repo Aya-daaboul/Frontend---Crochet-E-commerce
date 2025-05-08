@@ -1,13 +1,14 @@
 import React from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
+// This component serves as a layout for the admin panel, providing navigation and structure.
 const AdminLayout = () => {
   const { pathname } = useLocation();
 
   const tabs = [
     { path: "/admin/add", label: "➕ Add Product" },
     { path: "/admin/products", label: "🛒 Manage Products" },
-    { path: "/admin/orders", label: "📦 Manage Orders" }, // new
+    { path: "/admin/orders", label: "📦 Manage Orders" },
   ];
 
   return (

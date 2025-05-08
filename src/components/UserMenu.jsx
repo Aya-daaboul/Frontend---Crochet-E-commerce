@@ -2,15 +2,24 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserMenu = () => {
-  const [user, setUser] = useState(null);
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Get user data from local storage
+  // This will be used to check if the user is logged in and to display their name
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
   useEffect(() => {
-    const userData = localStorage.getItem("user");
-    if (userData) {
-      setUser(JSON.parse(userData));
-    }
+    const handleStorageChange = () => {
+      const updatedUser = localStorage.getItem("user");
+      setUser(updatedUser ? JSON.parse(updatedUser) : null);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   const logout = () => {
@@ -19,7 +28,7 @@ const UserMenu = () => {
     navigate("/home");
     window.location.reload();
   };
-
+  // Check if user is logged in
   if (!user) {
     return (
       <button
@@ -30,7 +39,7 @@ const UserMenu = () => {
       </button>
     );
   }
-
+  // Check if user is an admin
   return (
     <div className="relative">
       <button

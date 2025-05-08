@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+// This page is for the admin to manage orders, including updating their status.
 const AdminOrderManagerPage = () => {
   const [orders, setOrders] = useState([]);
   const [toast, setToast] = useState({ message: "", type: "" });
@@ -8,7 +9,7 @@ const AdminOrderManagerPage = () => {
   const fetchOrders = async () => {
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/all",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/all",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -23,10 +24,11 @@ const AdminOrderManagerPage = () => {
     }
   };
 
+  // This function updates the status of an order based on the order ID and new status.
   const updateStatus = async (orderId, status) => {
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/status/update",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/status/update",
         {
           method: "POST",
           headers: {
@@ -46,7 +48,7 @@ const AdminOrderManagerPage = () => {
       showToast("Status update failed", "error");
     }
   };
-
+  // This function shows a toast message for 3 seconds.
   const showToast = (message, type = "success") => {
     setToast({ message, type });
     setTimeout(() => setToast({ message: "", type: "" }), 3000);

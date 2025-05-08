@@ -48,7 +48,7 @@ const Header = () => {
       <header className="hidden md:flex bg-[#FF577F] rounded-full py-5 px-8 w-[90%] max-w-[1200px] h-[70px] mx-auto my-8 items-center justify-between relative overflow-visible">
         <div className="flex items-center gap-8">
           <div className="pl-9">
-            <UserMenu />
+            <UserMenu key={localStorage.getItem("user") || "guest"} />
           </div>
           <Link
             to="/"

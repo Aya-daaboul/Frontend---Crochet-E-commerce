@@ -11,18 +11,37 @@ const LoginPage = () => {
 
   const navigate = useNavigate();
 
+  const [loading, setLoading] = useState(false);
+
+  // Function to handle login
+  // It prevents the default form submission, clears any previous error messages,
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMessage("");
+
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+      return;
+    }
+
+    setLoading(true);
     try {
-      await loginUser(email, password);
+      const data = await loginUser(email, password);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.dispatchEvent(new Event("storage"));
       navigate("/home");
+      window.scrollTo({ top: 0, behavior: "instant" });
     } catch (error) {
       setErrorMessage(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
+    // Main Container
     <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4">
       {/* Top Heading */}
       <h1 className="text-4xl font-bold text-[#FF7F50] mb-8 text-center">
@@ -65,10 +84,16 @@ const LoginPage = () => {
             )}
             <button
               type="submit"
-              className="w-full bg-[#FF7F50] hover:bg-[#ff6633] text-white py-2 rounded-lg font-semibold transition"
+              className="w-full bg-[#FF7F50] hover:bg-[#ff6633] text-white py-2 rounded-lg font-semibold transition flex justify-center items-center gap-2"
+              disabled={loading}
             >
-              Log In
+              {loading ? (
+                <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                "Log In"
+              )}
             </button>
+
             <div className="text-sm mt-2 text-gray-600">
               Don’t have an account?{" "}
               <span

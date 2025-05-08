@@ -21,7 +21,7 @@ const AddressPage = () => {
     const fetchOrder = async () => {
       try {
         const { data } = await axios.get(
-          "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/cart",
+          "https://backend-crochet-e-commerce.onrender.com/api/orders/cart",
           { headers: { Authorization: `Bearer ${token}` } }
         );
 
@@ -51,7 +51,7 @@ const AddressPage = () => {
     try {
       // 1) Save address
       await axios.post(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/address",
+        "https://backend-crochet-e-commerce.onrender.com/api/address",
         {
           O_id: orderId,
           City: city,
@@ -63,7 +63,7 @@ const AddressPage = () => {
 
       // 2) Confirm the order (finalizes it – moves status away from \"unconfirmed\")
       await axios.post(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/confirm",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/confirm",
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );

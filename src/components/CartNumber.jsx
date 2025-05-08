@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
 const CartNumberContext = createContext();
-
+// This context will be used to manage the cart number across the application
+// and provide a way to increment or reset the cart count.
 export const CartNumberProvider = ({ children }) => {
   const [cartCount, setCartCount] = useState(0);
 

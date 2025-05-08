@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+// This page is for the admin to manage products, including deleting them.
 const AdminProductManagerPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,11 +12,12 @@ const AdminProductManagerPage = () => {
     setTimeout(() => setToast({ message: "", type: "" }), 3000);
   };
 
+  // This function fetches all products from the backend API.
   const fetchProducts = async () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/products"
+        "https://backend-crochet-e-commerce.onrender.com/api/products"
       );
       const data = await res.json();
       setProducts(data || []);
@@ -27,16 +29,17 @@ const AdminProductManagerPage = () => {
     }
   };
 
+  //
   const [confirmDeleteId, setConfirmDeleteId] = useState(null);
 
   const confirmDelete = (id) => {
     setConfirmDeleteId(id);
   };
-
+  // This function handles the deletion of a product based on its ID.
   const handleDelete = async () => {
     try {
       const res = await fetch(
-        `https://backend-crochet-e-commerce-production.up.railway.app/api/products/${confirmDeleteId}`,
+        `https://backend-crochet-e-commerce.onrender.com/api/products/${confirmDeleteId}`,
         {
           method: "DELETE",
           headers: {
@@ -57,6 +60,7 @@ const AdminProductManagerPage = () => {
     }
   };
 
+  // This function fetches all products from the backend API when the component mounts.
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -98,7 +102,7 @@ const AdminProductManagerPage = () => {
                 src={
                   product.Images[0].Image_URL.startsWith("http")
                     ? product.Images[0].Image_URL
-                    : `https://backend-crochet-e-commerce-production.up.railway.app${product.Images[0].Image_URL}`
+                    : `https://backend-crochet-e-commerce.onrender.com${product.Images[0].Image_URL}`
                 }
                 alt={product.Name}
                 className="h-48 w-full object-cover rounded mb-2"

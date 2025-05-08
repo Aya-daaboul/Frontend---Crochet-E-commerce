@@ -115,7 +115,8 @@ const Reasons = () => {
       </div>
 
       <Link
-        to="/Signup"
+        to="/products"
+        onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
         className="bg-white text-primary font-semibold rounded-full py-3 px-8 shadow-[0_6px_18px_rgba(255,87,127,0.2)] hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,87,127,0.35)] transition-transform duration-300 ease-out"
       >
         Explore Products &nbsp; ➜

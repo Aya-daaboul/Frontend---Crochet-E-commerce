@@ -1,8 +1,7 @@
 // src/api/index.js
 import axios from "axios";
 
-const API_URL =
-  "https://backend-crochet-e-commerce-production.up.railway.app/api";
+const API_URL = "https://backend-crochet-e-commerce.onrender.com/api";
 
 export const loginUser = async (email, password) => {
   try {
@@ -54,7 +53,7 @@ export const addToCart = async (productId, quantity = 1, token = null) => {
   }
 
   const res = await axios.post(
-    "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/add",
+    "https://backend-crochet-e-commerce.onrender.com/api/orders/add",
     { P_id: productId, Quantity: quantity }, // ✅ CORRECT KEYS
     config
   );

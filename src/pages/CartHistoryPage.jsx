@@ -17,11 +17,12 @@ const CartHistoryPage = () => {
     fetchHistory();
   }, []);
 
+  // This function fetches the order history from the backend API.
   const fetchHistory = async () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/history",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/history",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -34,6 +35,7 @@ const CartHistoryPage = () => {
     }
   };
 
+  // This function renders the status of the order with appropriate icons and colors.
   const renderStatus = (status) => {
     switch (status) {
       case "unconfirmed":
@@ -84,6 +86,7 @@ const CartHistoryPage = () => {
   };
   console.log("Orders:", orders);
 
+  //
   return (
     <>
       <div className="min-h-screen bg-white p-8">

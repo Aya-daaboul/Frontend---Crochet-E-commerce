@@ -22,7 +22,7 @@ const CartPage = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/cart",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/cart",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -48,7 +48,7 @@ const CartPage = () => {
   const handleRemove = async (productId) => {
     try {
       await axios.delete(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/remove",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/remove",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -64,11 +64,12 @@ const CartPage = () => {
     }
   };
 
+  // This function handles the confirmation of the order.
   const handleConfirm = async () => {
     setConfirming(true);
     try {
       await axios.post(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/confirm",
+        "https://backend-crochet-e-commerce.onrender.com/api/orders/confirm",
         {},
         {
           headers: {

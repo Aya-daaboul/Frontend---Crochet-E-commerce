@@ -40,7 +40,8 @@ const ProductsSec = () => (
     </div>
 
     <Link
-      to="/products"
+      to="/login"
+      onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
       className="inline-block rounded-full bg-white py-4 px-8 text-[#FF577F] font-semibold shadow-[0_6px_18px_rgba(255,87,127,0.2)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_12px_24px_rgba(255,87,127,0.35)]"
     >
       Explore More&nbsp; &rarr;
