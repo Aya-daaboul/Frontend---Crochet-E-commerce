@@ -47,7 +47,7 @@ const ProductPage = () => {
           src={
             product.Images?.[0]?.Image_URL?.startsWith("http")
               ? product.Images[0].Image_URL
-              : `https://backend-crochet-e-commerce-production.up.railway.app${product.Images[0].Image_URL}`
+              : `https://backend-crochet-e-commerce-production.up.railway.app/api/${product.Images[0].Image_URL}`
           }
           alt={product.Name}
           className="w-full h-[400px] object-cover rounded"

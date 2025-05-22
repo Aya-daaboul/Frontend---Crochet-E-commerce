@@ -37,8 +37,8 @@ const ProductsPage = () => {
     try {
       const endpoint =
         category === "all"
-          ? "https://backend-crochet-e-commerce-production.up.railway.app/products"
-          : `https://backend-crochet-e-commerce-production.up.railway.app/products/category/${category}`;
+          ? "https://backend-crochet-e-commerce-production.up.railway.app/api/products"
+          : `https://backend-crochet-e-commerce-production.up.railway.app/api/products/category/${category}`;
       const res = await axios.get(endpoint);
       setProducts(res.data);
     } catch (err) {

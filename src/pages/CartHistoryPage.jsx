@@ -22,7 +22,7 @@ const CartHistoryPage = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        "https://backend-crochet-e-commerce-production.up.railway.app/orders/history",
+        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/history",
         {
           headers: { Authorization: `Bearer ${token}` },
         }

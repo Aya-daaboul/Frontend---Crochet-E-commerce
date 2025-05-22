@@ -1,7 +1,8 @@
 // src/api/index.js
 import axios from "axios";
 
-const API_URL = "https://backend-crochet-e-commerce-production.up.railway.app";
+const API_URL =
+  "https://backend-crochet-e-commerce-production.up.railway.app/api";
 
 // Fetch all products
 export const loginUser = async (email, password) => {

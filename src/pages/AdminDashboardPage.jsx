@@ -35,7 +35,7 @@ const AdminDashboardPage = () => {
     data.append("image", imageFile);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/uploads",
+        "https://backend-crochet-e-commerce-production.up.railway.app/api/uploads",
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +45,7 @@ const AdminDashboardPage = () => {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Upload failed");
       setImageUrl(
-        "https://backend-crochet-e-commerce-production.up.railway.app" +
+        "https://backend-crochet-e-commerce-production.up.railway.app/api" +
           result.url
       );
       showToast("Image uploaded!", "success");
@@ -59,7 +59,7 @@ const AdminDashboardPage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/products",
+        "https://backend-crochet-e-commerce-production.up.railway.app/api/products",
         {
           method: "POST",
           headers: {

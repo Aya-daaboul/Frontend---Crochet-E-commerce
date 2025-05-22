@@ -9,7 +9,7 @@ const AdminOrderManagerPage = () => {
   const fetchOrders = async () => {
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/orders/all",
+        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/all",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -28,7 +28,7 @@ const AdminOrderManagerPage = () => {
   const updateStatus = async (orderId, status) => {
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce-production.up.railway.app/orders/status/update",
+        "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/status/update",
         {
           method: "POST",
           headers: {
