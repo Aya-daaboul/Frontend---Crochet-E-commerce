@@ -57,7 +57,7 @@ export const addToCart = async (productId, quantity = 1, token = null) => {
 
   // Check if the token is valid
   const res = await axios.post(
-    "https://backend-crochet-e-commerce-production.up.railway.app/orders/add",
+    "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/add",
     { P_id: productId, Quantity: quantity },
     config
   );
