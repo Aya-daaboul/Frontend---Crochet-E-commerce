@@ -20,7 +20,7 @@ const ReviewSection = ({ productId }) => {
   const fetchReviews = useCallback(async () => {
     try {
       const res = await fetch(
-        `https://backend-crochet-e-commerce.onrender.com/api/reviews/product/${productId}`
+        `https://backend-crochet-e-commerce-production.up.railway.app/reviews/product/${productId}`
       );
       const data = await res.json();
       setReviews(data || []);
@@ -45,7 +45,7 @@ const ReviewSection = ({ productId }) => {
 
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce.onrender.com/api/reviews",
+        "https://backend-crochet-e-commerce-production.up.railway.app/reviews",
         {
           method: "POST",
           headers: {

@@ -23,6 +23,7 @@ const AdminDashboardPage = () => {
 
   const [formData, setFormData] = useState(initialForm);
 
+  // Check if the user is logged in
   const showToast = (message, type = "success") => {
     setToast({ message, type });
     setTimeout(() => setToast({ message: "", type: "" }), 3000);
@@ -34,7 +35,7 @@ const AdminDashboardPage = () => {
     data.append("image", imageFile);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce.onrender.com/api/uploads",
+        "https://backend-crochet-e-commerce-production.up.railway.app/uploads",
         {
           method: "POST",
           headers: { Authorization: `Bearer ${token}` },
@@ -44,7 +45,8 @@ const AdminDashboardPage = () => {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Upload failed");
       setImageUrl(
-        "https://backend-crochet-e-commerce.onrender.com" + result.url
+        "https://backend-crochet-e-commerce-production.up.railway.app" +
+          result.url
       );
       showToast("Image uploaded!", "success");
     } catch (err) {
@@ -57,7 +59,7 @@ const AdminDashboardPage = () => {
     setLoading(true);
     try {
       const res = await fetch(
-        "https://backend-crochet-e-commerce.onrender.com/api/products",
+        "https://backend-crochet-e-commerce-production.up.railway.app/products",
         {
           method: "POST",
           headers: {

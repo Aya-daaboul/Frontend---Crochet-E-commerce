@@ -13,7 +13,7 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         const res = await fetch(
-          `https://backend-crochet-e-commerce.onrender.com/api/products/${id}`
+          `https://backend-crochet-e-commerce-production.up.railway.app/products/${id}`
         );
         const data = await res.json();
         setProduct(data);
@@ -47,7 +47,7 @@ const ProductPage = () => {
           src={
             product.Images?.[0]?.Image_URL?.startsWith("http")
               ? product.Images[0].Image_URL
-              : `https://backend-crochet-e-commerce.onrender.com${product.Images[0].Image_URL}`
+              : `https://backend-crochet-e-commerce-production.up.railway.app${product.Images[0].Image_URL}`
           }
           alt={product.Name}
           className="w-full h-[400px] object-cover rounded"

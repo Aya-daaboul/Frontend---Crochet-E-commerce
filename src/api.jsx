@@ -1,8 +1,9 @@
 // src/api/index.js
 import axios from "axios";
 
-const API_URL = "https://backend-crochet-e-commerce.onrender.com/api";
+const API_URL = "https://backend-crochet-e-commerce-production.up.railway.app";
 
+// Fetch all products
 export const loginUser = async (email, password) => {
   try {
     const response = await axios.post(`${API_URL}/users/login`, {
@@ -26,6 +27,7 @@ export const loginUser = async (email, password) => {
   }
 };
 
+// Fetch user profile
 export const registerUser = async (name, email, password) => {
   try {
     const response = await axios.post(`${API_URL}/users/register`, {
@@ -44,6 +46,7 @@ export const registerUser = async (name, email, password) => {
   }
 };
 
+// Fetch all products
 export const addToCart = async (productId, quantity = 1, token = null) => {
   const config = {
     headers: {},
@@ -52,9 +55,10 @@ export const addToCart = async (productId, quantity = 1, token = null) => {
     config.headers.Authorization = `Bearer ${token}`;
   }
 
+  // Check if the token is valid
   const res = await axios.post(
-    "https://backend-crochet-e-commerce.onrender.com/api/orders/add",
-    { P_id: productId, Quantity: quantity }, // ✅ CORRECT KEYS
+    "https://backend-crochet-e-commerce-production.up.railway.app/orders/add",
+    { P_id: productId, Quantity: quantity },
     config
   );
   return res.data;

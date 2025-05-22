@@ -26,6 +26,7 @@ const LoginPage = () => {
       return;
     }
 
+    // Basic password length validation
     setLoading(true);
     try {
       const data = await loginUser(email, password);

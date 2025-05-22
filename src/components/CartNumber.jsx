@@ -15,6 +15,7 @@ export const CartNumberProvider = ({ children }) => {
   };
 
   return (
+    // The CartNumberContext.Provider component provides the cartCount, incrementCart, and resetCart functions to its children.
     <CartNumberContext.Provider value={{ cartCount, incrementCart, resetCart }}>
       {children}
     </CartNumberContext.Provider>

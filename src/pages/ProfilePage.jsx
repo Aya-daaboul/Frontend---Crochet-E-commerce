@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const BASE = "https://backend-crochet-e-commerce.onrender.com";
+  const BASE = "https://backend-crochet-e-commerce-production.up.railway.app";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
