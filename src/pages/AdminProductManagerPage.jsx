@@ -39,7 +39,7 @@ const AdminProductManagerPage = () => {
   const handleDelete = async () => {
     try {
       const res = await fetch(
-        `https://backend-crochet-e-commerce-production.up.railway.app/products/${confirmDeleteId}`,
+        `https://backend-crochet-e-commerce-production.up.railway.app/api/products/${confirmDeleteId}`,
         {
           method: "DELETE",
           headers: {
@@ -102,7 +102,7 @@ const AdminProductManagerPage = () => {
                 src={
                   product.Images[0].Image_URL.startsWith("http")
                     ? product.Images[0].Image_URL
-                    : `https://backend-crochet-e-commerce-production.up.railway.app/api${product.Images[0].Image_URL}`
+                    : `https://backend-crochet-e-commerce-production.up.railway.app${product.Images[0].Image_URL}`
                 }
                 alt={product.Name}
                 className="h-48 w-full object-cover rounded mb-2"

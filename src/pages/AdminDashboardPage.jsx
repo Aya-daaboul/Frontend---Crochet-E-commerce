@@ -45,7 +45,7 @@ const AdminDashboardPage = () => {
       const result = await res.json();
       if (!res.ok) throw new Error(result.message || "Upload failed");
       setImageUrl(
-        "https://backend-crochet-e-commerce-production.up.railway.app/api" +
+        "https://backend-crochet-e-commerce-production.up.railway.app" +
           result.url
       );
       showToast("Image uploaded!", "success");
