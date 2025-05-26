@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="hidden md:flex bg-[#FF577F] rounded-full py-5 px-8 w-[90%] max-w-[1200px] h-[70px] mx-auto my-8 items-center justify-between relative overflow-visible">
+      <header className="hidden md:flex sticky top-2 z-50 bg-[#FF577F] rounded-full py-5 px-8 w-[90%] max-w-[1200px] h-[70px] mx-auto my-8 items-center justify-between overflow-visible">
         <div className="flex items-center gap-8">
           <div className="pl-9">
             <UserMenu key={localStorage.getItem("user") || "guest"} />
