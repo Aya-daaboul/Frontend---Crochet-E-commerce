@@ -26,6 +26,7 @@ const UserMenu = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     navigate("/home");
+    window.location.reload();
   };
   // Check if user is logged in
   if (!user) {
