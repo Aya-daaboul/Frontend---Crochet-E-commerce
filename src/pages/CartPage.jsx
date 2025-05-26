@@ -9,7 +9,6 @@ const CartPage = () => {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
   const [confirming, setConfirming] = useState(false);
-  const [showCelebration, setShowCelebration] = useState(false);
 
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -79,12 +78,7 @@ const CartPage = () => {
       );
       setCartItems([]);
       setTotal(0);
-      setShowCelebration(true);
-
-      setTimeout(() => {
-        setShowCelebration(false);
-        navigate("/home");
-      }, 2500);
+      navigate("/home");
     } catch (err) {
       console.error("Confirm failed:", err);
     }
@@ -102,17 +96,6 @@ const CartPage = () => {
         <h1 className="text-4xl font-bold text-center text-[#FF4D8B] mb-10">
           My Cart
         </h1>
-
-        {/* Order confirmed animation */}
-        {showCelebration && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-90">
-            <img
-              src={ratmain}
-              alt="Confirmed"
-              className="w-60 h-60 animate-zoom-in"
-            />
-          </div>
-        )}
 
         {/* Loading Spinner or Product List */}
         {loading ? (
@@ -176,24 +159,6 @@ const CartPage = () => {
           </div>
         )}
       </div>
-
-      {/* Zoom animation */}
-      <style>{`
-        @keyframes zoomIn {
-          0% {
-            transform: scale(0.3);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-
-        .animate-zoom-in {
-          animation: zoomIn 0.7s ease-in-out forwards;
-        }
-      `}</style>
     </>
   );
 };

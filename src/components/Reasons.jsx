@@ -117,7 +117,7 @@ const Reasons = () => {
       <Link
         to="/products"
         onClick={() => window.scrollTo({ top: 0, behavior: "instant" })}
-        className="bg-white text-primary font-semibold rounded-full py-3 px-8 shadow-[0_6px_18px_rgba(255,87,127,0.2)] hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,87,127,0.35)] transition-transform duration-300 ease-out"
+        className="bg-white text-[#FF577F] text-primary font-semibold rounded-full py-3 px-8 shadow-[0_6px_18px_rgba(255,87,127,0.2)] hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(255,87,127,0.35)] transition-transform duration-300 ease-out hover:text-[#FF4D8B] hover:bg-[#FDDA4D] text-lg flex items-center justify-center"
       >
         Explore Products &nbsp; ➜
       </Link>

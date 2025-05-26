@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useCartNumber } from "../components/CartNumber";
+import ratmain from "../assets/ratmain.png";
 
 const AddressPage = () => {
   const [city, setCity] = useState("");
@@ -8,9 +10,10 @@ const AddressPage = () => {
   const [floor, setFloor] = useState("");
   const [orderId, setOrderId] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const { resetCart } = useCartNumber();
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const [showCelebration, setShowCelebration] = useState(false);
 
   /* --------------------------------------------------
    * Fetch the current *unconfirmed* order ID once when
@@ -43,13 +46,11 @@ const AddressPage = () => {
    * 3) Navigate to order history on success
    * --------------------------------------------------*/
   const handleSubmit = async () => {
-    // Guard – shouldn\'t happen, but better safe
     if (!orderId) return alert("No active order found");
 
     setLoading(true);
 
     try {
-      // 1) Save address
       await axios.post(
         "https://backend-crochet-e-commerce-production.up.railway.app/api/address",
         {
@@ -61,15 +62,25 @@ const AddressPage = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      // 2) Confirm the order (finalizes it – moves status away from \"unconfirmed\")
       await axios.post(
         "https://backend-crochet-e-commerce-production.up.railway.app/api/orders/confirm",
         {},
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
       );
 
-      // 3) Go to history so the user immediately sees their order
-      navigate("/history");
+      localStorage.setItem("cartCount", "0");
+      resetCart();
+
+      // Trigger animation
+      setShowCelebration(true);
+
+      // Delay redirect until animation finishes
+      setTimeout(() => {
+        setShowCelebration(false);
+        navigate("/history");
+      }, 2500);
     } catch (err) {
       console.error("Error completing checkout", err);
       alert("Something went wrong – please try again.");
@@ -80,6 +91,16 @@ const AddressPage = () => {
 
   return (
     <>
+      {showCelebration && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-white bg-opacity-90">
+          <img
+            src={ratmain}
+            alt="Confirmed"
+            className="w-60 h-60 animate-zoom-in"
+          />
+        </div>
+      )}
+
       <div className="min-h-screen bg-white px-6 py-20 flex flex-col items-center">
         <h1 className="text-4xl font-bold text-[#FF4D8B] mb-6 text-center">
           Confirm your Order
@@ -129,8 +150,25 @@ const AddressPage = () => {
           }`}
         >
           {loading ? "Processing..." : "Confirm Order"}
+          {resetCart()}
         </button>
       </div>
+      {/* zoom animation */}
+      <style>{`
+      @keyframes zoomIn {
+        0% {
+          transform: scale(0.3);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-zoom-in {
+        animation: zoomIn 0.7s ease-in-out forwards;
+      }
+    `}</style>
     </>
   );
 };

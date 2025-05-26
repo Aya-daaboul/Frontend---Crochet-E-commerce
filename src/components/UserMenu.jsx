@@ -61,15 +61,17 @@ const UserMenu = () => {
             My Profile
           </button>
 
-          <button
-            onClick={() => {
-              navigate("/history");
-              setOpen(false);
-            }}
-            className="block w-full px-4 py-2 text-left text-[#FF577F] hover:bg-pink-50 font-medium transition"
-          >
-            Cart History
-          </button>
+          {user.role !== "admin" && (
+            <button
+              onClick={() => {
+                navigate("/history");
+                setOpen(false);
+              }}
+              className="block w-full px-4 py-2 text-left text-[#FF577F] hover:bg-pink-50 font-medium transition"
+            >
+              Cart History
+            </button>
+          )}
 
           {user.role === "admin" && (
             <button
